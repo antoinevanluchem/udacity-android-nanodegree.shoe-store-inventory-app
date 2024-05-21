@@ -3,7 +3,8 @@
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="login">Login</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_up">Sign Up</string>
+    <string name="welcome">Welcome!</string>
+    <string name="welcome_message">Your sole-mate for shoe inventory management awaits.</string>
+    <string name="step_right_in">Step right in!</string>
 </resources>
