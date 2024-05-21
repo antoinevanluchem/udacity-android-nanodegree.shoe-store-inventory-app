@@ -14,6 +14,7 @@ import com.udacity.shoestore.databinding.FragmentLoginBinding
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,7 +24,7 @@ class LoginFragment : Fragment() {
 
         // Clicking either button should navigate to the Welcome Screen
         binding.loginButton.setOnClickListener { v: View ->
-            logIn(v)
+            login(v)
         }
         binding.signUpButton.setOnClickListener { v: View ->
             signUp(v)
@@ -35,11 +36,11 @@ class LoginFragment : Fragment() {
     /**
      * TODO: check if password and email match in database
      */
-    private fun logIn(v: View) {
+    private fun login(v: View) {
         if (isEmailValid() && isPasswordValid()) {
             v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
         } else {
-            Toast.makeText(requireContext(), "Something went wrong.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Unable to login.", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -50,7 +51,7 @@ class LoginFragment : Fragment() {
         if (isEmailValid() && isPasswordValid()) {
             v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
         } else {
-            Toast.makeText(requireContext(), "Something went wrong.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Unable to sign up.", Toast.LENGTH_SHORT).show()
         }
     }
 
