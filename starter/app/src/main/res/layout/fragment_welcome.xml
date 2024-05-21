@@ -29,7 +29,7 @@
             android:layout_marginTop="@dimen/padding_wide"
             android:gravity="center"
             android:text="@string/welcome_message"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
