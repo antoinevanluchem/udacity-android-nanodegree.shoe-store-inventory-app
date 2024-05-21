@@ -1,25 +1,66 @@
 package com.udacity.shoestore
 
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.udacity.shoestore.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
+    private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding: FragmentLoginBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login, container, false)
+
+        // Clicking either button should navigate to the Welcome Screen
         binding.loginButton.setOnClickListener { v: View ->
-            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+            logIn(v)
         }
+        binding.signUpButton.setOnClickListener { v: View ->
+            signUp(v)
+        }
+
         return binding.root
+    }
+
+    /**
+     * TODO: check if password and email match in database
+     */
+    private fun logIn(v: View) {
+        if (isEmailValid() && isPasswordValid()) {
+            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+        } else {
+            Toast.makeText(requireContext(), "Something went wrong.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    /**
+     * TODO: do some verifications and add user to database
+     */
+    private fun signUp(v: View) {
+        if (isEmailValid() && isPasswordValid()) {
+            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+        } else {
+            Toast.makeText(requireContext(), "Something went wrong.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun isEmailValid(): Boolean {
+        val email = binding.emailEditText.text.toString().trim()
+        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    private fun isPasswordValid(): Boolean {
+        val text = binding.passwordEditText.text.toString().trim()
+        return text.isNotEmpty()
     }
 }
