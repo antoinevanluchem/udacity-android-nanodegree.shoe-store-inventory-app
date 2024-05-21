@@ -56,12 +56,14 @@ class LoginFragment : Fragment() {
     }
 
     private fun isEmailValid(): Boolean {
-        val email = binding.emailEditText.text.toString().trim()
-        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+//        val email = binding.emailEditText.text.toString().trim()
+//        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        return true
     }
 
     private fun isPasswordValid(): Boolean {
-        val text = binding.passwordEditText.text.toString().trim()
-        return text.isNotEmpty()
+//        val text = binding.passwordEditText.text.toString().trim()
+//        return text.isNotEmpty()
+        return true
     }
 }
