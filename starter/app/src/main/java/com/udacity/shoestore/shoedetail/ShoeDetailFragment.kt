@@ -15,35 +15,34 @@ import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.models.Shoe
 
 class ShoeDetailFragment : Fragment() {
+
+    private lateinit var binding: FragmentShoeDetailBinding
+    private lateinit var viewModel: ShoeDetailViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentShoeDetailBinding = DataBindingUtil.inflate(inflater,
+        binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_shoe_detail, container, false)
 
         val newShoe = Shoe("550", 43.0, "New Balance", "My favourite shoes",
             R.drawable.new_balance_550_white
         )
         val viewModelFactory = ShoeDetailViewModelFactory(newShoe)
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(ShoeDetailViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(ShoeDetailViewModel::class.java)
 
-        binding.editCompanyName.setOnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE ||
-                actionId == EditorInfo.IME_ACTION_GO ||
-                actionId == EditorInfo.IME_ACTION_NEXT) {
-                viewModel.setCompanyName(binding.editCompanyName.text.toString())
-                true
-            } else {
-                false
-            }
+        binding.save.setOnClickListener {
+            saveShoe()
+            it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(viewModel.shoe.value))
         }
-
-
-        binding.save.setOnClickListener { it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(viewModel.shoe.value)) }
         binding.cancel.setOnClickListener { it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(null)) }
 
         return binding.root
+    }
+    
+    private fun saveShoe() {
+        viewModel.setCompanyName(binding.editCompanyName.text.toString())
     }
 }
