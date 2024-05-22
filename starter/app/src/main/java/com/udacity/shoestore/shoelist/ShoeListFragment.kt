@@ -23,7 +23,6 @@ class ShoeListFragment : Fragment() {
 
     private lateinit var viewModel: ShoeListViewModel
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,8 +55,9 @@ class ShoeListFragment : Fragment() {
                 false
             )
 
-            inflatedShoeBinding.companyAndName.text = "${shoe.company} ${shoe.name}"
-            inflatedShoeBinding.size.text = shoe.size.toString()
+            inflatedShoeBinding.companyAndName.text =
+                getString(R.string.company_and_name_format, shoe.company, shoe.name)
+            inflatedShoeBinding.size.text = getString(R.string.shoe_size_format,shoe.size)
             inflatedShoeBinding.description.text = shoe.description
             inflatedShoeBinding.shoeImage.setImageResource(R.drawable.new_balance_550_white)
 
