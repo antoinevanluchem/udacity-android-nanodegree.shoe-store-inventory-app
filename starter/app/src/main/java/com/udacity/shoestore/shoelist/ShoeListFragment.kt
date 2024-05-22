@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.R
@@ -19,27 +21,33 @@ class ShoeListFragment : Fragment() {
     private lateinit var layoutInflater: LayoutInflater
     private lateinit var binding: FragmentShoeListBinding
 
+    private lateinit var viewModel: ShoeListViewModel
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         layoutInflater = inflater
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
+        viewModel = ViewModelProvider(requireActivity()).get(ShoeListViewModel::class.java)
 
-        binding.addShoeButton.setOnClickListener {
-            it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
-        }
+        viewModel.shoeList.observe(this, Observer { displayShoeList(it) })
 
         val shoeListFragmentArgs by navArgs<ShoeListFragmentArgs>()
         if (shoeListFragmentArgs.newShoe != null) {
-            initShoeList(mutableListOf(shoeListFragmentArgs.newShoe!!))
+            viewModel.addShoe(shoeListFragmentArgs.newShoe!!)
+        }
+
+        binding.addShoeButton.setOnClickListener {
+            it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
 
 
         return binding.root
     }
 
-    private fun initShoeList(shoeList: MutableList<Shoe>) {
+    private fun displayShoeList(shoeList: MutableList<Shoe>) {
         for (shoe in shoeList) {
             val inflatedShoeBinding: ShoeElementBinding = DataBindingUtil.inflate(
                 layoutInflater,
