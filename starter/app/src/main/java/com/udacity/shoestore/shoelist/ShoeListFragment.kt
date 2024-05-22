@@ -34,8 +34,8 @@ class ShoeListFragment : Fragment() {
         viewModel.shoeList.observe(this, Observer { displayShoeList(it) })
 
         val shoeListFragmentArgs by navArgs<ShoeListFragmentArgs>()
-        if (shoeListFragmentArgs.newShoe != null) {
-            viewModel.addShoe(shoeListFragmentArgs.newShoe!!)
+        if (shoeListFragmentArgs.shoe != null) {
+            viewModel.addShoe(shoeListFragmentArgs.shoe!!)
         }
 
         binding.addShoeButton.setOnClickListener {
@@ -47,7 +47,7 @@ class ShoeListFragment : Fragment() {
     }
 
     private fun displayShoeList(shoeList: MutableList<Shoe>) {
-        for (shoe in shoeList) {
+        shoeList.forEachIndexed { index, shoe ->
             val inflatedShoeBinding: ShoeElementBinding = DataBindingUtil.inflate(
                 layoutInflater,
                 R.layout.shoe_element,
@@ -60,6 +60,11 @@ class ShoeListFragment : Fragment() {
             inflatedShoeBinding.size.text = getString(R.string.shoe_size_format,shoe.size)
             inflatedShoeBinding.description.text = shoe.description
             inflatedShoeBinding.shoeImage.setImageResource(R.drawable.new_balance_550_white)
+
+            inflatedShoeBinding.shoeImage.setOnClickListener {
+                viewModel.setIndex(index)
+                it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment(shoe))
+            }
 
             binding.shoeList.addView(inflatedShoeBinding.root)
         }

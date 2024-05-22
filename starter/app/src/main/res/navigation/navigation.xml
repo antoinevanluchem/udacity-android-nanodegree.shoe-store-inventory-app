@@ -37,7 +37,7 @@
         android:label="fragment_shoe_list"
         tools:layout="@layout/fragment_shoe_list" >
         <argument
-            android:name="newShoe"
+            android:name="shoe"
             app:argType="com.udacity.shoestore.models.Shoe"
             app:nullable="true"
             android:defaultValue="@null" />
@@ -58,5 +58,10 @@
                 app:nullable="true"
                 app:argType="com.udacity.shoestore.models.Shoe"/>
         </action>
+        <argument
+            android:name="shoe"
+            app:argType="com.udacity.shoestore.models.Shoe"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

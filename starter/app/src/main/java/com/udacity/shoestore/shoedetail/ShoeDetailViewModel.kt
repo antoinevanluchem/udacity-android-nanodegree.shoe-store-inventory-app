@@ -15,8 +15,6 @@ class ShoeDetailViewModel(shoe: Shoe): ViewModel() {
         _shoe.value = shoe
     }
     fun setCompanyName(companyName: String) {
-
-        Log.i("ShoeDetialViewModel", companyName)
         _shoe.value?.company = companyName
     }
 }
