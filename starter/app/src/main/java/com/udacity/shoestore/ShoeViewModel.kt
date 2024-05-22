@@ -11,32 +11,28 @@ class ShoeViewModel: ViewModel() {
     val shoeList: LiveData<MutableList<Shoe>>
         get() = _shoeList
 
-    private var newShoe: Shoe = Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
     private var editShoeIndex: Int? = null
-
-
-    val detailedShoe: Shoe
-        get() = editShoeIndex?.let { _shoeList.value?.get(it) } ?: newShoe
 
     fun setIndexOfDetailedShoe(index: Int) {
         editShoeIndex = index
     }
 
-
-    fun setCompanyName(companyName: String) {
-        detailedShoe.company = companyName
-    }
-
-    fun onSaveShoeClicked() {
-        if (editShoeIndex != null) {
-            _shoeList.value?.set(editShoeIndex!!, detailedShoe)
+    fun getDetailedShoe(): Shoe {
+        return if (editShoeIndex == null) {
+            Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
         } else {
-            _shoeList.value?.add(detailedShoe.copy())
+            _shoeList.value!![editShoeIndex!!]
         }
-
-        editShoeIndex = null
-        newShoe = Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
-
-        Log.i("ShoeViewModel", _shoeList.value.toString())
     }
+
+    fun saveShoe(companyName: String) {
+        if (editShoeIndex == null) {
+            val newShoe = Shoe("Name", 0.0, companyName, "", R.drawable.no_shoe_image_available)
+            _shoeList.value?.add(newShoe)
+        } else {
+            _shoeList.value?.get(editShoeIndex!!)?.company = companyName
+            editShoeIndex = null
+        }
+    }
+
 }

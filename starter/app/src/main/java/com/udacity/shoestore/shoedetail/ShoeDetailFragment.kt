@@ -31,11 +31,10 @@ class ShoeDetailFragment : Fragment() {
             R.layout.fragment_shoe_detail, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(ShoeViewModel::class.java)
 
-        displayShoe(viewModel.detailedShoe)
+        displayShoe(viewModel.getDetailedShoe())
 
         binding.save.setOnClickListener {
             saveShoe()
-            viewModel.onSaveShoeClicked()
             it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
         }
         binding.cancel.setOnClickListener { it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()) }
@@ -44,7 +43,7 @@ class ShoeDetailFragment : Fragment() {
     }
     
     private fun saveShoe() {
-        viewModel.setCompanyName(binding.editCompanyName.text.toString())
+        viewModel.saveShoe(binding.editCompanyName.text.toString())
     }
 
     private fun displayShoe(shoe: Shoe) {
