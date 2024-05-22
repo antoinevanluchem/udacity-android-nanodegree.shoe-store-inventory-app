@@ -18,8 +18,10 @@ class ShoeDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentShoeDetailBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
 
-        val newShoe: Shoe = Shoe("550", 43.0, "New Balance", "My favourite shoes", R.drawable.new_balance_550_white)
-        binding.button.setOnClickListener { it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(newShoe)) }
+        val newShoe = Shoe("550", 43.0, "New Balance", "My favourite shoes", R.drawable.new_balance_550_white)
+
+        binding.save.setOnClickListener { it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(newShoe)) }
+        binding.cancel.setOnClickListener { it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(null)) }
 
         return binding.root
     }
