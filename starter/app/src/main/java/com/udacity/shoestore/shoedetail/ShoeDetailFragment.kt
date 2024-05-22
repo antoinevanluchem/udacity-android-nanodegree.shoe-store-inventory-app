@@ -13,14 +13,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.R
+import com.udacity.shoestore.ShoeViewModel
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.models.Shoe
-import com.udacity.shoestore.shoelist.ShoeListFragmentArgs
 
 class ShoeDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeDetailBinding
-    private lateinit var viewModel: ShoeDetailViewModel
+    private lateinit var viewModel: ShoeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,26 +29,18 @@ class ShoeDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_shoe_detail, container, false)
+        viewModel = ViewModelProvider(requireActivity()).get(ShoeViewModel::class.java)
 
-        val viewModelFactory = ShoeDetailViewModelFactory(getDisplayedShoe())
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ShoeDetailViewModel::class.java)
-
-        viewModel.shoe.observe(this, Observer {
-            displayShoe(it)
-        })
+        displayShoe(viewModel.detailedShoe)
 
         binding.save.setOnClickListener {
             saveShoe()
-            it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(viewModel.shoe.value))
+            viewModel.onSaveShoeClicked()
+            it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
         }
-        binding.cancel.setOnClickListener { it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(null)) }
+        binding.cancel.setOnClickListener { it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()) }
 
         return binding.root
-    }
-
-    private fun getDisplayedShoe(): Shoe {
-        val shoeListFragmentArgs by navArgs<ShoeDetailFragmentArgs>()
-        return shoeListFragmentArgs.shoe ?: Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
     }
     
     private fun saveShoe() {
@@ -59,3 +51,4 @@ class ShoeDetailFragment : Fragment() {
         binding.editCompanyName.setText(shoe.company)
     }
 }
+
