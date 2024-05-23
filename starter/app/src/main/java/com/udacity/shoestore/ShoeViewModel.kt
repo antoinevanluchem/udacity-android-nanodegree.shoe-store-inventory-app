@@ -1,6 +1,5 @@
 package com.udacity.shoestore
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,27 +11,38 @@ class ShoeViewModel: ViewModel() {
         get() = _shoeList
 
     private var editShoeIndex: Int? = null
+    var detailedShoe: Shoe = Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
 
-    fun setIndexOfDetailedShoe(index: Int) {
+    fun setCompanyName(companyName: String) {
+        detailedShoe.company = companyName
+    }
+
+    fun onAddShoeClicked() {
+        editShoeIndex = _shoeList.value!!.size
+        detailedShoe = Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
+    }
+
+    fun onShoeSelected(index: Int) {
         editShoeIndex = index
+        detailedShoe = _shoeList.value!![index].copy()
     }
 
-    fun getDetailedShoe(): Shoe {
-        return if (editShoeIndex == null) {
-            Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
-        } else {
-            _shoeList.value!![editShoeIndex!!]
-        }
+    fun onShoeSaved() {
+        _shoeList.value!!.setOrAdd(editShoeIndex!!, detailedShoe)
     }
 
-    fun saveShoe(companyName: String) {
-        if (editShoeIndex == null) {
-            val newShoe = Shoe("Name", 0.0, companyName, "", R.drawable.no_shoe_image_available)
-            _shoeList.value?.add(newShoe)
-        } else {
-            _shoeList.value?.get(editShoeIndex!!)?.company = companyName
-            editShoeIndex = null
-        }
+    fun onEditShoeCancelled() {
+        editShoeIndex = null
+        detailedShoe = Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
     }
+}
 
+fun <T> MutableList<T>.setOrAdd(index: Int, element: T) {
+    if (index < size) {
+        this[index] = element
+    } else if (index == size) {
+        add(element)
+    } else {
+        throw IndexOutOfBoundsException("Index: $index, Size: $size")
+    }
 }

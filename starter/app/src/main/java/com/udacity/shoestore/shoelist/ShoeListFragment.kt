@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.R
 import com.udacity.shoestore.ShoeViewModel
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
@@ -39,6 +38,7 @@ class ShoeListFragment : Fragment() {
         })
 
         binding.addShoeButton.setOnClickListener {
+            viewModel.onAddShoeClicked()
             it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
 
@@ -64,7 +64,7 @@ class ShoeListFragment : Fragment() {
             inflatedShoeBinding.shoeImage.setImageResource(shoe.image)
 
             inflatedShoeBinding.shoeImage.setOnClickListener {
-                viewModel.setIndexOfDetailedShoe(index)
+                viewModel.onShoeSelected(index)
                 it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
             }
 
