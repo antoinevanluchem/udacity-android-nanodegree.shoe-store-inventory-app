@@ -1,11 +1,12 @@
 package com.udacity.shoestore.shoedetail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.udacity.shoestore.R
@@ -21,26 +22,32 @@ class ShoeDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_shoe_detail, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_shoe_detail, container, false
+        )
         viewModel = ViewModelProvider(requireActivity()).get(ShoeViewModel::class.java)
 
-        displayShoe(viewModel.detailedShoe)
+        viewModel.detailedShoe.observe(viewLifecycleOwner, Observer {
+            displayShoe(it)
+        })
 
         binding.save.setOnClickListener {
             saveShoe()
-            it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
+            it.findNavController()
+                .navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
         }
         binding.cancel.setOnClickListener {
-            viewModel.onEditShoeCancelled()
-            it.findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
+            viewModel.onCancelEditShoe()
+            it.findNavController()
+                .navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
         }
 
         return binding.root
     }
-    
+
     private fun saveShoe() {
         viewModel.setCompanyName(binding.editCompanyName.text.toString())
         viewModel.onShoeSaved()

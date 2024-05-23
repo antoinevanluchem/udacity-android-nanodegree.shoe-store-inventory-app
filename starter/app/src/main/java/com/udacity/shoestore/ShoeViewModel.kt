@@ -6,34 +6,53 @@ import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.models.Shoe
 
 class ShoeViewModel: ViewModel() {
+    private val EMPTY_SHOE = Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
+
     private var _shoeList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
     val shoeList: LiveData<MutableList<Shoe>>
         get() = _shoeList
 
     private var editShoeIndex: Int? = null
-    var detailedShoe: Shoe = Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
 
-    fun setCompanyName(companyName: String) {
-        detailedShoe.company = companyName
-    }
+    private var _detailedShoe = MutableLiveData<Shoe>(EMPTY_SHOE.copy())
+    val detailedShoe: LiveData<Shoe>
+        get() = _detailedShoe
 
-    fun onAddShoeClicked() {
-        editShoeIndex = _shoeList.value!!.size
-        detailedShoe = Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
+    fun onAddShoe() {
+        _shoeList.value?.let {
+            editShoeIndex = it.size
+            _detailedShoe.value = EMPTY_SHOE.copy()
+        }
     }
 
     fun onShoeSelected(index: Int) {
-        editShoeIndex = index
-        detailedShoe = _shoeList.value!![index].copy()
+        _shoeList.value?.let {
+            editShoeIndex = index
+            _detailedShoe.value = it[index].copy()
+        }
+    }
+
+    fun setCompanyName(companyName: String) {
+        _detailedShoe.value?.company = companyName
     }
 
     fun onShoeSaved() {
-        _shoeList.value!!.setOrAdd(editShoeIndex!!, detailedShoe)
+        editShoeIndex?.let { index ->
+            detailedShoe.value?.let {shoe ->
+                _shoeList.value?.setOrAdd(index, shoe)
+            }
+        }
+
+        resetShoe()
     }
 
-    fun onEditShoeCancelled() {
+    fun onCancelEditShoe() {
+        resetShoe()
+    }
+
+    private fun resetShoe() {
         editShoeIndex = null
-        detailedShoe = Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
+        _detailedShoe.value = EMPTY_SHOE.copy()
     }
 }
 

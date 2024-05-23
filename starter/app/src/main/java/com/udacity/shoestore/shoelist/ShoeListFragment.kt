@@ -33,12 +33,11 @@ class ShoeListFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(ShoeViewModel::class.java)
 
         viewModel.shoeList.observe(viewLifecycleOwner, Observer {
-            Log.i("ShoeListFragment", it.toString())
             displayShoeList(it)
         })
 
         binding.addShoeButton.setOnClickListener {
-            viewModel.onAddShoeClicked()
+            viewModel.onAddShoe()
             it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
 
@@ -49,7 +48,6 @@ class ShoeListFragment : Fragment() {
     private fun displayShoeList(shoeList: MutableList<Shoe>) {
         binding.shoeList.removeAllViews()
         shoeList.forEachIndexed { index, shoe ->
-            Log.i("ShoeListFragment", "in display shoe list")
             val inflatedShoeBinding: ShoeElementBinding = DataBindingUtil.inflate(
                 layoutInflater,
                 R.layout.shoe_element,
