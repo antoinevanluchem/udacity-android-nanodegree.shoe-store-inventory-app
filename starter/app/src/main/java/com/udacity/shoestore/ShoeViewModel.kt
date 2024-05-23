@@ -36,6 +36,14 @@ class ShoeViewModel: ViewModel() {
         _detailedShoe.value?.company = companyName
     }
 
+    fun setName(name: String) {
+        _detailedShoe.value?.name = name
+    }
+
+    fun setShoeSize(size: Double) {
+        _detailedShoe.value?.size = size
+    }
+
     fun onShoeSaved() {
         editShoeIndex?.let { index ->
             detailedShoe.value?.let {shoe ->

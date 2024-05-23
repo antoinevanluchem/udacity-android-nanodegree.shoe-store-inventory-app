@@ -44,9 +44,29 @@
             android:layout_marginTop="124dp"
             android:ems="10"
             android:inputType="text"
-            android:text="New Balance"
+            android:text="Company"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/touch_target"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editCompanyName" />
+
+        <EditText
+            android:id="@+id/editShoeSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
