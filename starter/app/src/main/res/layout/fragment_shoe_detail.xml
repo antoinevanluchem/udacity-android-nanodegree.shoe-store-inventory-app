@@ -9,19 +9,16 @@
         android:layout_height="match_parent"
         android:padding="@dimen/padding_wide">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <Button
             android:id="@+id/save"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/save"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -29,45 +26,63 @@
 
         <Button
             android:id="@+id/cancel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Cancel"
-            app:layout_constraintBaseline_toBaselineOf="@+id/save"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/darker_gray"
+            android:text="@string/cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/save"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/editCompanyName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="@dimen/touch_target"
-            android:layout_marginTop="124dp"
-            android:ems="10"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:inputType="text"
-            android:text="Company"
+            android:hint="@string/edit_company_name_hint"
+            android:autofillHints="name"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editName"
+            app:layout_constraintEnd_toStartOf="@+id/editName"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:text="@string/dummy_company" />
 
         <EditText
             android:id="@+id/editName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="@dimen/touch_target"
-            android:ems="10"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:inputType="text"
-            android:text="Name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editCompanyName" />
+            android:autofillHints="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/editCompanyName"
+            app:layout_constraintTop_toBottomOf="@+id/shoeImage"
+            tools:text="@string/dummy_name" />
 
         <com.google.android.material.slider.Slider
             android:id="@+id/editShoeSize"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/touch_target"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/slider_description"
             android:stepSize="0.5"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
             android:valueFrom="35"
             android:valueTo="48"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-            app:layout_constraintTop_toBottomOf="@+id/editName"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editName" />
 
         <ImageView
             android:id="@+id/shoeImage"
@@ -76,18 +91,26 @@
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
             android:src="@drawable/no_shoe_image_available"
+            android:contentDescription="@string/shoe_image_content_description"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editShoeSize" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
             android:inputType="text"
-            android:text="Name"
+            android:autofillHints="none"
+            tools:text="@string/dummy_description"
+            app:layout_constraintBottom_toTopOf="@+id/save"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shoeImage" />
+            app:layout_constraintTop_toBottomOf="@+id/editShoeSize" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

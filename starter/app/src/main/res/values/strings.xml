@@ -13,5 +13,13 @@
     <string name="shoe_size_format">Size: %1$.1f</string>
     <string name="shoe_list_text">These are your shoes...</string>
     <string name="logout">Logout</string>
+    <string name="cancel">Cancel</string>
+    <string name="dummy_company">Company</string>
+    <string name="dummy_name">Name</string>
+    <string name="edit_company_name_hint">Edit the company name here.</string>
+    <string name="dummy_description">Description</string>
+    <string name="slider_description">This is the slider for the shoe size.</string>
+    <string name="save">Save</string>
+    <string name="shoe_image_content_description">This is the image of the shoe.</string>
 
 </resources>
