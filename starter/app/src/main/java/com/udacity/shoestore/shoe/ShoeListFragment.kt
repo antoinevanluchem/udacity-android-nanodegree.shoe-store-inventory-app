@@ -26,7 +26,6 @@ class ShoeListFragment : Fragment() {
     //
     // Variables
     //
-
     private lateinit var layoutInflater: LayoutInflater
     private lateinit var binding: FragmentShoeListBinding
 
@@ -35,7 +34,6 @@ class ShoeListFragment : Fragment() {
     //
     // onAction
     //
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -102,28 +100,30 @@ class ShoeListFragment : Fragment() {
 
     private fun displayShoeList(shoeList: MutableList<Shoe>) {
         binding.shoeList.removeAllViews()
-        shoeList.forEachIndexed { index, shoe ->
-            val inflatedShoeBinding: ShoeElementBinding = DataBindingUtil.inflate(
-                layoutInflater,
-                R.layout.shoe_element,
-                binding.shoeList,
-                false
-            )
+        shoeList.forEachIndexed(::displayShoe)
+    }
 
-            inflatedShoeBinding.apply {
-                companyAndName.text =
-                    getString(R.string.company_and_name_format, shoe.company, shoe.name)
-                size.text = getString(R.string.shoe_size_format,shoe.size)
-                description.text = shoe.description
-                shoeImage.setImageResource(shoe.image)
+    private fun displayShoe(index: Int, shoe: Shoe) {
+        val inflatedShoeBinding: ShoeElementBinding = DataBindingUtil.inflate(
+            layoutInflater,
+            R.layout.shoe_element,
+            binding.shoeList,
+            false
+        )
 
-                shoeImage.setOnClickListener {
-                    viewModel.onShoeSelected(index)
-                    it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
-                }
+        inflatedShoeBinding.apply {
+            companyAndName.text =
+                getString(R.string.company_and_name_format, shoe.company, shoe.name)
+            size.text = getString(R.string.shoe_size_format,shoe.size)
+            description.text = shoe.description
+            shoeImage.setImageResource(shoe.image)
+
+            shoeImage.setOnClickListener {
+                viewModel.onShoeSelected(index)
+                it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
             }
-            
-            binding.shoeList.addView(inflatedShoeBinding.root)
         }
+
+        binding.shoeList.addView(inflatedShoeBinding.root)
     }
 }

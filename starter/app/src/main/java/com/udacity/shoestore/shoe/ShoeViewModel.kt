@@ -62,7 +62,6 @@ class ShoeViewModel: ViewModel() {
     //
     // Setters
     //
-
     fun setCompanyName(companyName: String) {
         _detailedShoe.value?.company = companyName
     }
