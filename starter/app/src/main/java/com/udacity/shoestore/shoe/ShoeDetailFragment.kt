@@ -15,8 +15,16 @@ import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 
 class ShoeDetailFragment : Fragment() {
 
+    //
+    // Variables
+    //
+
     private lateinit var binding: FragmentShoeDetailBinding
     private lateinit var viewModel: ShoeViewModel
+
+    //
+    // onAction
+    //
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

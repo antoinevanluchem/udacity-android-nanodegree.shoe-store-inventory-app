@@ -23,19 +23,18 @@ import com.udacity.shoestore.databinding.ShoeElementBinding
 
 class ShoeListFragment : Fragment() {
 
+    //
+    // Variables
+    //
+
     private lateinit var layoutInflater: LayoutInflater
     private lateinit var binding: FragmentShoeListBinding
 
     private lateinit var viewModel: ShoeViewModel
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        setUpOverflowMenu()
-        (activity as AppCompatActivity).supportActionBar?.show()
-        (activity as AppCompatActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false);
-        (activity as AppCompatActivity).supportActionBar?.setHomeButtonEnabled(false);
-    }
+    //
+    // onAction
+    //
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,16 +44,22 @@ class ShoeListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(ShoeViewModel::class.java)
 
-        viewModel.shoeList.observe(viewLifecycleOwner, Observer {
-            displayShoeList(it)
-        })
-
-        binding.addShoeButton.setOnClickListener {
-            viewModel.onAddShoe()
-            it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
-        }
+        setUpButtons()
+        setUpObservers()
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setUpOverflowMenu()
+        (activity as AppCompatActivity).supportActionBar?.apply {
+            show()
+            setDisplayShowTitleEnabled(false)
+            setDisplayHomeAsUpEnabled(false)
+            setHomeButtonEnabled(false)
+        }
     }
 
     private fun setUpOverflowMenu() {
@@ -76,6 +81,25 @@ class ShoeListFragment : Fragment() {
         }, viewLifecycleOwner)
     }
 
+    //
+    // Set up the add shoe button
+    //
+    private fun setUpButtons() {
+        binding.addShoeButton.setOnClickListener {
+            it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
+            viewModel.onAddShoe()
+        }
+    }
+
+    //
+    // Set up observers
+    //
+    private fun setUpObservers() {
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer {
+            displayShoeList(it)
+        })
+    }
+
     private fun displayShoeList(shoeList: MutableList<Shoe>) {
         binding.shoeList.removeAllViews()
         shoeList.forEachIndexed { index, shoe ->
@@ -86,17 +110,19 @@ class ShoeListFragment : Fragment() {
                 false
             )
 
-            inflatedShoeBinding.companyAndName.text =
-                getString(R.string.company_and_name_format, shoe.company, shoe.name)
-            inflatedShoeBinding.size.text = getString(R.string.shoe_size_format,shoe.size)
-            inflatedShoeBinding.description.text = shoe.description
-            inflatedShoeBinding.shoeImage.setImageResource(shoe.image)
+            inflatedShoeBinding.apply {
+                companyAndName.text =
+                    getString(R.string.company_and_name_format, shoe.company, shoe.name)
+                size.text = getString(R.string.shoe_size_format,shoe.size)
+                description.text = shoe.description
+                shoeImage.setImageResource(shoe.image)
 
-            inflatedShoeBinding.shoeImage.setOnClickListener {
-                viewModel.onShoeSelected(index)
-                it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
+                shoeImage.setOnClickListener {
+                    viewModel.onShoeSelected(index)
+                    it.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
+                }
             }
-
+            
             binding.shoeList.addView(inflatedShoeBinding.root)
         }
     }
