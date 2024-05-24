@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/touch_target"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/slider_description"
             android:stepSize="0.5"
@@ -81,6 +81,7 @@
             android:valueFrom="35"
             android:valueTo="48"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editName" />
 
@@ -104,13 +105,14 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:inputType="text"
             android:autofillHints="none"
-            tools:text="@string/dummy_description"
+            android:gravity="start|start"
+            android:inputType="text"
             app:layout_constraintBottom_toTopOf="@+id/save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editShoeSize" />
+            app:layout_constraintTop_toBottomOf="@+id/editShoeSize"
+            tools:text="@string/dummy_description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

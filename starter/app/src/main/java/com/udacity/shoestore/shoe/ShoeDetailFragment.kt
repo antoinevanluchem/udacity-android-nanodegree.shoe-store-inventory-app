@@ -1,9 +1,12 @@
 package com.udacity.shoestore.shoe
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -47,7 +50,6 @@ class ShoeDetailFragment : Fragment() {
     private fun setUpButtons() {
         binding.save.setOnClickListener {
             navigateToShoeList()
-            saveEditTextFields()
             viewModel.onShoeSaved()
         }
 
@@ -56,13 +58,6 @@ class ShoeDetailFragment : Fragment() {
             viewModel.onCancelEditShoe()
         }
     }
-
-    private fun saveEditTextFields() {
-        viewModel.setCompanyName(binding.editCompanyName.text.toString())
-        viewModel.setName(binding.editName.text.toString())
-        viewModel.setDescription(binding.editDescription.text.toString())
-    }
-
     private fun navigateToShoeList() {
         findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
     }
@@ -78,6 +73,48 @@ class ShoeDetailFragment : Fragment() {
         binding.editShoeSize.addOnChangeListener { _, value, _ ->
             viewModel.setShoeSize(value.toDouble())
         }
+
+        binding.editCompanyName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Do nothing
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Do nothing
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                s?.let { viewModel.setCompanyName(it.toString()) }
+            }
+        })
+
+        binding.editName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Do nothing
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Do nothing
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                s?.let { viewModel.setName(it.toString()) }
+            }
+        })
+
+        binding.editDescription.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Do nothing
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Do nothing
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                s?.let { viewModel.setDescription(it.toString()) }
+            }
+        })
     }
 
     //
