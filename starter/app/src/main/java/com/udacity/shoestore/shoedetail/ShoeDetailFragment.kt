@@ -43,14 +43,14 @@ class ShoeDetailFragment : Fragment() {
     //
     private fun setUpButtons() {
         binding.save.setOnClickListener {
+            navigateToShoeList()
             saveEditTextFields()
             viewModel.onShoeSaved()
-            navigateToShoeList()
         }
 
         binding.cancel.setOnClickListener {
-            viewModel.onCancelEditShoe()
             navigateToShoeList()
+            viewModel.onCancelEditShoe()
         }
     }
 

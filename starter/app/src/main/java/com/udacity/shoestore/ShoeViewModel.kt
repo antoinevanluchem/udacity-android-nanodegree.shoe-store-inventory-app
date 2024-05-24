@@ -6,9 +6,15 @@ import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.models.Shoe
 
 class ShoeViewModel: ViewModel() {
+    //
+    // Constants
+    //
     private val EMPTY_SHOE = Shoe("Name", 35.0, "Company", "", R.drawable.no_shoe_image_available)
     private val IMAGE_RESOURCES = listOf(R.drawable.no_shoe_image_available, R.drawable.new_balance_550_white)
 
+    //
+    // Members
+    //
     private var _shoeList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
     val shoeList: LiveData<MutableList<Shoe>>
         get() = _shoeList
@@ -19,55 +25,29 @@ class ShoeViewModel: ViewModel() {
     val detailedShoe: LiveData<Shoe>
         get() = _detailedShoe
 
+    //
+    // onAction
+    //
     fun onAddShoe() {
-        _shoeList.value?.let {
-            editShoeIndex = it.size
-            _detailedShoe.value = EMPTY_SHOE.copy()
-        }
+        val list = _shoeList.value ?: return
+
+        editShoeIndex = list.size
+        _detailedShoe.value = EMPTY_SHOE.copy()
     }
 
     fun onShoeSelected(index: Int) {
-        _shoeList.value?.let {
-            editShoeIndex = index
-            _detailedShoe.value = it[index].copy()
-        }
-    }
+        val list = _shoeList.value ?: return
 
-    fun setCompanyName(companyName: String) {
-        _detailedShoe.value?.company = companyName
-    }
-
-    fun setName(name: String) {
-        _detailedShoe.value?.name = name
-    }
-
-    fun setShoeSize(size: Double) {
-        _detailedShoe.value?.size = size
-    }
-
-    fun setDescription(description: String) {
-        _detailedShoe.value?.description = description
-    }
-
-    fun switchImage() {
-        _detailedShoe.value?.let {
-            val currentIndex = IMAGE_RESOURCES.indexOf(it.image)
-            val nextIndex = (currentIndex + 1) % IMAGE_RESOURCES.size
-
-            val newShoe = it.copy()
-            newShoe.image = IMAGE_RESOURCES[nextIndex]
-
-            _detailedShoe.value = newShoe
-        }
+        editShoeIndex = index
+        _detailedShoe.value = list[index].copy()
     }
 
     fun onShoeSaved() {
-        editShoeIndex?.let { index ->
-            detailedShoe.value?.let {shoe ->
-                _shoeList.value?.setOrAdd(index, shoe)
-            }
-        }
+        val index = editShoeIndex ?: return
+        val shoe = _detailedShoe.value ?: return
+        val list = _shoeList.value ?: return
 
+        list.setOrAdd(index, shoe)
         resetShoe()
     }
 
@@ -79,14 +59,33 @@ class ShoeViewModel: ViewModel() {
         editShoeIndex = null
         _detailedShoe.value = EMPTY_SHOE.copy()
     }
-}
 
-fun <T> MutableList<T>.setOrAdd(index: Int, element: T) {
-    if (index < size) {
-        this[index] = element
-    } else if (index == size) {
-        add(element)
-    } else {
-        throw IndexOutOfBoundsException("Index: $index, Size: $size")
+    //
+    // Setters
+    //
+
+    fun setCompanyName(companyName: String) {
+        _detailedShoe.value?.company = companyName
+    }
+
+    fun setName(name: String) {
+        _detailedShoe.value?.name = name
+    }
+
+    fun setDescription(description: String) {
+        _detailedShoe.value?.description = description
+    }
+
+    fun setShoeSize(size: Double) {
+        _detailedShoe.value?.size = size
+    }
+
+    fun switchImage() {
+        val shoe = _detailedShoe.value ?: return
+
+        val currentIndex = IMAGE_RESOURCES.indexOf(shoe.image)
+        val nextIndex = (currentIndex + 1) % IMAGE_RESOURCES.size
+
+        _detailedShoe.value = shoe.copy(image = IMAGE_RESOURCES[nextIndex])
     }
 }
