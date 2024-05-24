@@ -1,11 +1,9 @@
 package com.udacity.shoestore.shoedetail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,6 +13,7 @@ import com.udacity.shoestore.R
 import com.udacity.shoestore.ShoeViewModel
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.models.Shoe
+
 
 class ShoeDetailFragment : Fragment() {
 
@@ -47,6 +46,10 @@ class ShoeDetailFragment : Fragment() {
             viewModel.switchImage()
         }
 
+        binding.editShoeSize.addOnChangeListener { _, value, _ ->
+            viewModel.setShoeSize(value.toDouble())
+        }
+
         viewModel.detailedShoe.observe(viewLifecycleOwner, Observer {
             displayShoe(it)
         })
@@ -57,12 +60,6 @@ class ShoeDetailFragment : Fragment() {
     private fun saveShoe() {
         viewModel.setCompanyName(binding.editCompanyName.text.toString())
         viewModel.setName(binding.editName.text.toString())
-        try {
-            val shoeSize = binding.editShoeSize.text.toString().toDouble()
-            viewModel.setShoeSize(shoeSize)
-        } catch (e: NumberFormatException) {
-            Toast.makeText(context, "Hello, this is a toast message!", Toast.LENGTH_SHORT).show();
-        }
 
         viewModel.onShoeSaved()
     }
@@ -70,7 +67,7 @@ class ShoeDetailFragment : Fragment() {
     private fun displayShoe(shoe: Shoe) {
         binding.editCompanyName.setText(shoe.company)
         binding.editName.setText(shoe.name)
-        binding.editShoeSize.setText(shoe.size.toString())
+        binding.editShoeSize.setValue(shoe.size.toFloat())
         binding.shoeImage.setImageResource(shoe.image)
     }
 }

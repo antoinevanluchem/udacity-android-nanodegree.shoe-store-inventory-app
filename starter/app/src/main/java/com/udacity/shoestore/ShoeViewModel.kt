@@ -1,13 +1,12 @@
 package com.udacity.shoestore
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.models.Shoe
 
 class ShoeViewModel: ViewModel() {
-    private val EMPTY_SHOE = Shoe("Name", 0.0, "Company", "", R.drawable.no_shoe_image_available)
+    private val EMPTY_SHOE = Shoe("Name", 35.0, "Company", "", R.drawable.no_shoe_image_available)
     private val IMAGE_RESOURCES = listOf(R.drawable.no_shoe_image_available, R.drawable.new_balance_550_white)
 
     private var _shoeList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
