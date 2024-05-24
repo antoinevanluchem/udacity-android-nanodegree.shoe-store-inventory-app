@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.ActivityMainBinding
 import timber.log.Timber
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         NavigationUI.setupActionBarWithNavController(this, findNavController(R.id.myNavHostFragment))
 
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.hide()
     }
 
     override fun onSupportNavigateUp(): Boolean {

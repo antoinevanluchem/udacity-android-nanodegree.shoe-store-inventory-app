@@ -59,11 +59,6 @@ class ShoeViewModel: ViewModel() {
         resetShoe()
     }
 
-    private fun resetShoe() {
-        editShoeIndex = null
-        _detailedShoe.value = EMPTY_SHOE.copy()
-    }
-
     //
     // Setters
     //
@@ -91,5 +86,18 @@ class ShoeViewModel: ViewModel() {
         val nextIndex = (currentIndex + 1) % IMAGE_RESOURCES.size
 
         _detailedShoe.value = shoe.copy(image = IMAGE_RESOURCES[nextIndex])
+    }
+
+    //
+    // Reset
+    //
+    private fun resetShoe() {
+        editShoeIndex = null
+        _detailedShoe.value = EMPTY_SHOE.copy()
+    }
+
+    fun resetShoeList() {
+        _shoeList.value = mutableListOf()
+        resetShoe()
     }
 }
