@@ -57,6 +57,7 @@ class ShoeDetailFragment : Fragment() {
     private fun saveEditTextFields() {
         viewModel.setCompanyName(binding.editCompanyName.text.toString())
         viewModel.setName(binding.editName.text.toString())
+        viewModel.setDescription(binding.editDescription.text.toString())
     }
 
     private fun navigateToShoeList() {
@@ -89,6 +90,7 @@ class ShoeDetailFragment : Fragment() {
     private fun displayShoe(shoe: Shoe) {
         binding.editCompanyName.setText(shoe.company)
         binding.editName.setText(shoe.name)
+        binding.editDescription.setText(shoe.description)
         binding.editShoeSize.value = shoe.size.toFloat()
         binding.shoeImage.setImageResource(shoe.image)
     }

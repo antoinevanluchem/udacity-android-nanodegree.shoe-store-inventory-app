@@ -45,6 +45,10 @@ class ShoeViewModel: ViewModel() {
         _detailedShoe.value?.size = size
     }
 
+    fun setDescription(description: String) {
+        _detailedShoe.value?.description = description
+    }
+
     fun switchImage() {
         _detailedShoe.value?.let {
             val currentIndex = IMAGE_RESOURCES.indexOf(it.image)
