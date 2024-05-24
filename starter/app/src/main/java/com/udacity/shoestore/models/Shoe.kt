@@ -7,4 +7,4 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Shoe(
     var name: String, var size: Double, var company: String, var description: String,
-    val image: Int = R.drawable.no_shoe_image_available) : Parcelable
+    var image: Int = R.drawable.no_shoe_image_available) : Parcelable

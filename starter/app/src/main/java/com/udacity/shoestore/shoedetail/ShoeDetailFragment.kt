@@ -1,6 +1,7 @@
 package com.udacity.shoestore.shoedetail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,10 +32,6 @@ class ShoeDetailFragment : Fragment() {
         )
         viewModel = ViewModelProvider(requireActivity()).get(ShoeViewModel::class.java)
 
-        viewModel.detailedShoe.observe(viewLifecycleOwner, Observer {
-            displayShoe(it)
-        })
-
         binding.save.setOnClickListener {
             saveShoe()
             it.findNavController()
@@ -45,6 +42,14 @@ class ShoeDetailFragment : Fragment() {
             it.findNavController()
                 .navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
         }
+
+        binding.shoeImage.setOnClickListener {
+            viewModel.switchImage()
+        }
+
+        viewModel.detailedShoe.observe(viewLifecycleOwner, Observer {
+            displayShoe(it)
+        })
 
         return binding.root
     }
@@ -66,6 +71,7 @@ class ShoeDetailFragment : Fragment() {
         binding.editCompanyName.setText(shoe.company)
         binding.editName.setText(shoe.name)
         binding.editShoeSize.setText(shoe.size.toString())
+        binding.shoeImage.setImageResource(shoe.image)
     }
 }
 
