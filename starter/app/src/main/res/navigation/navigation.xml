@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/shoeListFragment"
-        android:name="com.udacity.shoestore.shoelist.ShoeListFragment"
+        android:name="com.udacity.shoestore.shoe.ShoeListFragment"
         android:label="fragment_shoe_list"
         tools:layout="@layout/fragment_shoe_list" >
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/shoeDetailFragment"
-        android:name="com.udacity.shoestore.shoedetail.ShoeDetailFragment"
+        android:name="com.udacity.shoestore.shoe.ShoeDetailFragment"
         android:label="ShoeDetailFragment"
         tools:layout="@layout/fragment_shoe_detail">
         <action

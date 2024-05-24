@@ -1,4 +1,4 @@
-package com.udacity.shoestore.models
+package com.udacity.shoestore.shoe
 
 import android.os.Parcelable
 import com.udacity.shoestore.R

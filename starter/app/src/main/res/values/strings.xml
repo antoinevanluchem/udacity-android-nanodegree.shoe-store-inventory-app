@@ -11,5 +11,6 @@
     <string name="lets_go">Let\'s go!</string>
     <string name="company_and_name_format">%1$s %2$s</string>
     <string name="shoe_size_format">Size: %1$.1f</string>
+    <string name="shoe_list_text">These are your shoes...</string>
 
 </resources>

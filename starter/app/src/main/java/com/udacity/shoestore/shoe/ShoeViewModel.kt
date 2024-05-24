@@ -1,16 +1,20 @@
-package com.udacity.shoestore
+package com.udacity.shoestore.shoe
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.udacity.shoestore.models.Shoe
+import com.udacity.shoestore.R
+import com.udacity.shoestore.setOrAdd
 
 class ShoeViewModel: ViewModel() {
     //
     // Constants
     //
     private val EMPTY_SHOE = Shoe("Name", 35.0, "Company", "", R.drawable.no_shoe_image_available)
-    private val IMAGE_RESOURCES = listOf(R.drawable.no_shoe_image_available, R.drawable.new_balance_550_white)
+    private val IMAGE_RESOURCES = listOf(
+        R.drawable.no_shoe_image_available,
+        R.drawable.new_balance_550_white
+    )
 
     //
     // Members
