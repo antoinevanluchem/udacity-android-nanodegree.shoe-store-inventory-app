@@ -51,7 +51,6 @@
             android:id="@+id/action_shoeListFragment_to_shoeDetailFragment"
             app:destination="@id/shoeDetailFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@id/shoeListFragment" />
         <action
             android:id="@+id/action_shoeListFragment_to_loginFragment"
@@ -69,7 +68,6 @@
             android:id="@+id/action_shoeDetailFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment"
             app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/shoeListFragment"></action>
     </fragment>
 </navigation>

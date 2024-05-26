@@ -13,7 +13,10 @@ class ShoeViewModel: ViewModel() {
     private val EMPTY_SHOE = Shoe("Name", 35.0, "Company", "", R.drawable.no_shoe_image_available)
     private val IMAGE_RESOURCES = listOf(
         R.drawable.no_shoe_image_available,
-        R.drawable.new_balance_550_white
+        R.drawable.new_balance_550_white,
+        R.drawable.nike_dunk_high,
+        R.drawable.addidas_stan_smith,
+        R.drawable.copenhagen_257
     )
 
     //
