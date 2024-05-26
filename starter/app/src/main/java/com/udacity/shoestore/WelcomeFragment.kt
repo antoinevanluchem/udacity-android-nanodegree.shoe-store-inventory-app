@@ -18,7 +18,7 @@ class WelcomeFragment : Fragment() {
         val binding: FragmentWelcomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_welcome, container, false)
 
         binding.button.setOnClickListener {
-            it.findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
+            it.findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragmentEmptyShoeList())
         }
         return binding.root
     }

@@ -24,23 +24,8 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_instructionsFragment"
-            app:destination="@id/instructionsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popUpTo="@id/welcomeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/instructionsFragment"
-        android:name="com.udacity.shoestore.InstructionsFragment"
-        android:label="InstructionsFragment"
-        tools:layout="@layout/fragment_instruction_empty_shoe_list" >
-        <action
-            android:id="@+id/action_instructionsFragment_to_shoeListFragment"
-            app:destination="@id/shoeListFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popUpTo="@id/shoeListFragment" />
+            android:id="@+id/action_welcomeFragment_to_instructionsFragmentEmptyShoeList"
+            app:destination="@id/instructionsFragmentEmptyShoeList" />
     </fragment>
     <fragment
         android:id="@+id/shoeListFragment"
@@ -68,6 +53,34 @@
             android:id="@+id/action_shoeDetailFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment"
             app:enterAnim="@android:anim/slide_in_left"
-            app:popUpTo="@id/shoeListFragment"></action>
+            app:popUpTo="@id/shoeListFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/instructionsFragmentShoeDetails"
+        android:name="com.udacity.shoestore.instruction.InstructionFragmentShoeDetails"
+        android:label="InstructionsFragmentShoeDetails"
+        tools:layout="@layout/fragment_instruction_shoe_details" >
+        <action
+            android:id="@+id/action_instructionsFragmentShoeDetails_to_instructionFragmentShoeList"
+            app:destination="@id/instructionFragmentShoeList" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructionsFragmentEmptyShoeList"
+        android:name="com.udacity.shoestore.instruction.InstructionFragmentEmptyShoeList"
+        android:label="InstructionsFragmentEmptyShoeList"
+        tools:layout="@layout/fragment_instruction_empty_shoe_list" >
+        <action
+            android:id="@+id/action_instructionsFragmentEmptyShoeList_to_instructionsFragmentShoeDetails"
+            app:destination="@id/instructionsFragmentShoeDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructionFragmentShoeList"
+        android:name="com.udacity.shoestore.instruction.InstructionFragmentShoeList"
+        android:label="InstructionFragmentShoeList"
+        tools:layout="@layout/fragment_instruction_shoe_list" >
+
+    <action
+            android:id="@+id/action_instructionFragmentShoeList_to_shoeListFragment"
+            app:destination="@id/shoeListFragment" />
     </fragment>
 </navigation>
