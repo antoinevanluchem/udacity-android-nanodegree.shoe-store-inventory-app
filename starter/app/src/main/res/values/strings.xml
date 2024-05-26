@@ -21,5 +21,7 @@
     <string name="slider_description">This is the slider for the shoe size.</string>
     <string name="save">Save</string>
     <string name="shoe_image_content_description">This is the image of the shoe.</string>
+    <string name="shoe_store_image_content_description">An image of a shoe store.</string>
+    <string name="shoe_store_invetory">Shoe Store Invetory</string>
 
 </resources>
