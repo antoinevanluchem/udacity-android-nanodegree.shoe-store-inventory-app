@@ -4,10 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.android.navigation.WelcomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--
+    LinearLayout because this is a simple view with only three elements.
+    -->
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/padding_wide">
+        android:orientation="vertical"
+        android:gravity="center"
+        >
 
         <TextView
             android:id="@+id/welcome"
@@ -16,24 +22,18 @@
             android:fontFamily="@font/allan_bold"
             android:text="@string/welcome"
             android:textColor="@android:color/black"
-            android:textSize="60sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="60sp" />
 
         <TextView
             android:id="@+id/welcomeMessage"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_wide"
             android:gravity="center"
             android:text="@string/welcome_message"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/welcome" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button"
@@ -41,12 +41,9 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
             android:padding="@dimen/padding_wide"
+            android:layout_marginTop="32dp"
             android:text="@string/step_right_in"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/welcomeMessage" />
+            android:textColor="@android:color/white" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

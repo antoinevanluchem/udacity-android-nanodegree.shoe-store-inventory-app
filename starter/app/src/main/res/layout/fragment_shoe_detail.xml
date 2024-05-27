@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.android.navigation.ShoeDetailFragment">
 
+    <!--
+    Constraintlayout because it is easier to make an intuitive UI with a lot of elements
+    -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

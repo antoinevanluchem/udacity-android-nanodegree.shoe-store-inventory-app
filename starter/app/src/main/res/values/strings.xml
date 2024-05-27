@@ -23,5 +23,15 @@
     <string name="shoe_image_content_description">This is the image of the shoe.</string>
     <string name="shoe_store_image_content_description">An image of a shoe store.</string>
     <string name="shoe_store_inventory">Shoe Store Inventory</string>
+    <string name="next">Next</string>
+    <string name="empty_shoe_list_image_content_description">Image of an empty shoe list used for instruction of the app.</string>
+    <string name="empty_shoe_list_instruction_text">Press on the red plus to add shoes…</string>
+    <string name="shoe_details_image_content_description">Image of the shoe details view used for instruction of the app.</string>
+    <string name="shoe_list_image_content_description">Image of a shoe list with one shoe used for instruction of the app.</string>
+    <string name="add_shoe_button_content_description">Button to add new shoes.</string>
+    <string name="shoeImageContentDescription">The image of the shoe.</string>
+    <string name="dummy_company_and_name">New Balance 550</string>
+    <string name="dummy_shoe_size">Size: 43</string>
+    <string name="dummy_long_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu lectus ut leo efficitur scelerisque at vel dolor. Sed risus nunc, porta ac nulla quis, scelerisque lobortis ante. Sed quis laoreet sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum nulla ante, ut dictum tortor luctus vel. Nulla odio mi, rutrum et orci eget, sagittis fermentum ante. Proin in metus sed nisl porttitor convallis. Mauris risus tellus, sodales et lobortis a, convallis eu massa. Sed at aliquam augue, ut vulputate odio. Cras non nunc pulvinar enim ultricies porttitor. Proin tempus quam ullamcorper mi dapibus fringilla.</string>
 
 </resources>

@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         NavigationUI.setupActionBarWithNavController(this, findNavController(R.id.myNavHostFragment))
 
+        // I find an action bar ugly and outdated, hence I hide it for most of the app.
         supportActionBar?.hide()
     }
 

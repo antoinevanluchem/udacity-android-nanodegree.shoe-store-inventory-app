@@ -21,19 +21,22 @@ class LoginFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_login, container, false)
 
-        // Clicking either button should navigate to the Welcome Screen
-        binding.loginButton.setOnClickListener { v: View ->
-            login(v)
-        }
-        binding.signUpButton.setOnClickListener { v: View ->
-            signUp(v)
-        }
+        setUpButtons()
 
         return binding.root
     }
 
+    //
+    // Set up login and sign up button
+    //
+    private fun setUpButtons() {
+        // Clicking either button should navigate to the Welcome Screen
+        binding.loginButton.setOnClickListener(::login)
+        binding.signUpButton.setOnClickListener(::signUp)
+    }
+
     /**
-     * TODO: check if password and email match in database
+     * Check if password and email match in database
      */
     private fun login(v: View) {
         if (isEmailValid() && isPasswordValid()) {
@@ -44,7 +47,7 @@ class LoginFragment : Fragment() {
     }
 
     /**
-     * TODO: do some verifications and add user to database
+     * Do some verifications and add user to database
      */
     private fun signUp(v: View) {
         if (isEmailValid() && isPasswordValid()) {
@@ -54,12 +57,21 @@ class LoginFragment : Fragment() {
         }
     }
 
+    //
+    // Email an dpassword validation
+    //
+    /**
+     * For now, simple email validation
+     */
     private fun isEmailValid(): Boolean {
 //        val email = binding.emailEditText.text.toString().trim()
 //        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
         return true
     }
 
+    /**
+     * For now, password needs to be not empty
+     */
     private fun isPasswordValid(): Boolean {
 //        val text = binding.passwordEditText.text.toString().trim()
 //        return text.isNotEmpty()

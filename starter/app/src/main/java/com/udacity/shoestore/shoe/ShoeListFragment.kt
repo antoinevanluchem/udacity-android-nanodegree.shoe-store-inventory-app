@@ -93,9 +93,7 @@ class ShoeListFragment : Fragment() {
     // Set up observers
     //
     private fun setUpObservers() {
-        viewModel.shoeList.observe(viewLifecycleOwner, Observer {
-            displayShoeList(it)
-        })
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer(::displayShoeList))
     }
 
     private fun displayShoeList(shoeList: MutableList<Shoe>) {

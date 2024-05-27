@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.android.navigation.InstructionFragmentEmptyShoeList">
 
+    <!--
+    Constraintlayout because it is easier to align the instruction text inside the instruction image
+    -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,13 +20,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Next"
+            android:text="@string/next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/emptyShoeListInstructionImage"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
@@ -33,16 +37,17 @@
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/empty_shoe_list_image_content_description" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/emptyShoeListInstructionText"
             style="@style/InstructionTextStyle"
-            android:text="Press on the red plus to add shoes..."
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:text="@string/empty_shoe_list_instruction_text"
+            app:layout_constraintBottom_toBottomOf="@+id/emptyShoeListInstructionImage"
+            app:layout_constraintEnd_toEndOf="@+id/emptyShoeListInstructionImage"
+            app:layout_constraintStart_toStartOf="@+id/emptyShoeListInstructionImage"
+            app:layout_constraintTop_toTopOf="@+id/emptyShoeListInstructionImage"
             app:layout_constraintVertical_bias="0.75" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
