@@ -33,5 +33,7 @@
     <string name="dummy_company_and_name">New Balance 550</string>
     <string name="dummy_shoe_size">Size: 43</string>
     <string name="dummy_long_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu lectus ut leo efficitur scelerisque at vel dolor. Sed risus nunc, porta ac nulla quis, scelerisque lobortis ante. Sed quis laoreet sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum nulla ante, ut dictum tortor luctus vel. Nulla odio mi, rutrum et orci eget, sagittis fermentum ante. Proin in metus sed nisl porttitor convallis. Mauris risus tellus, sodales et lobortis a, convallis eu massa. Sed at aliquam augue, ut vulputate odio. Cras non nunc pulvinar enim ultricies porttitor. Proin tempus quam ullamcorper mi dapibus fringilla.</string>
+    <string name="shoe_details_instruction_text">Here you can edit your shoe...</string>
+    <string name="shoe_list_instruction_text">Press on the shoe image to see the details of the shoe.</string>
 
 </resources>

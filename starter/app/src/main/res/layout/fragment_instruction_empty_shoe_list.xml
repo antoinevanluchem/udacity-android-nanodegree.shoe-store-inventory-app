@@ -11,15 +11,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/padding_wide">
+        android:padding="@dimen/wide">
 
     <Button
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="@dimen/wide"
+            android:layout_marginEnd="@dimen/wide"
+            android:layout_marginBottom="@dimen/wide"
             android:text="@string/next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,10 +29,10 @@
             android:id="@+id/emptyShoeListInstructionImage"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="@dimen/wide"
+            android:layout_marginTop="@dimen/wide"
+            android:layout_marginEnd="@dimen/wide"
+            android:layout_marginBottom="@dimen/wide"
             android:src="@drawable/empty_shoe_list"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"

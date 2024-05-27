@@ -11,14 +11,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/padding_wide">
+        android:padding="@dimen/wide">
 
     <TextView
             android:id="@+id/shoeListText"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/margin_wide"
-            android:layout_marginTop="@dimen/margin_wide"
+            android:layout_marginStart="@dimen/wide"
+            android:layout_marginTop="@dimen/wide"
             android:text="@string/shoe_list_text"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,9 +28,9 @@
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/wide"
             app:layout_constraintTop_toBottomOf="@+id/shoeListText"
-            tools:layout_editor_absoluteX="1dp">
+            >
 
             <LinearLayout
                 android:id="@+id/shoeList"
@@ -43,8 +43,8 @@
             android:id="@+id/addShoeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="@dimen/wide"
+            android:layout_marginBottom="@dimen/wide"
             android:clickable="true"
             android:src="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="parent"

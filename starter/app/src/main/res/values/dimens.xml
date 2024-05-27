@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="padding_wide">16dp</dimen>
-    <dimen name="margin_wide">16dp</dimen>
     <dimen name="touch_target">50dp</dimen>
+    <dimen name="narrow">16dp</dimen>
+    <dimen name="wide">16dp</dimen>
+    <dimen name="ultra_wide">16dp</dimen>
+
 </resources>

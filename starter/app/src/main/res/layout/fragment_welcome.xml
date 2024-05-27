@@ -30,8 +30,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/welcome_message"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/wide"
+            android:layout_marginEnd="@dimen/wide"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
 
@@ -40,8 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
-            android:padding="@dimen/padding_wide"
-            android:layout_marginTop="32dp"
+            android:padding="@dimen/wide"
+            android:layout_marginTop="@dimen/ultra_wide"
             android:text="@string/step_right_in"
             android:textColor="@android:color/white" />
 

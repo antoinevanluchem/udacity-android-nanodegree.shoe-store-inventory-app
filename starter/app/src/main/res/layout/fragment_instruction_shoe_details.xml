@@ -11,28 +11,28 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/padding_wide">
+        android:padding="@dimen/wide">
 
     <Button
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="@dimen/wide"
+            android:layout_marginEnd="@dimen/wide"
+            android:layout_marginBottom="@dimen/wide"
             android:text="@string/next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/shoeDetailsInstructionImage"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="@dimen/wide"
+            android:layout_marginTop="@dimen/wide"
+            android:layout_marginEnd="@dimen/wide"
+            android:layout_marginBottom="@dimen/wide"
             android:src="@drawable/new_balance_detail_view"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,13 +41,13 @@
             android:contentDescription="@string/shoe_details_image_content_description" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/shoeDetailsInstructionText"
             style="@style/InstructionTextStyle"
-            android:text="Here you can edit your shoe..."
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:text="@string/shoe_details_instruction_text"
+            app:layout_constraintBottom_toBottomOf="@+id/shoeDetailsInstructionImage"
+            app:layout_constraintEnd_toEndOf="@+id/shoeDetailsInstructionImage"
+            app:layout_constraintStart_toStartOf="@+id/shoeDetailsInstructionImage"
+            app:layout_constraintTop_toTopOf="@+id/shoeDetailsInstructionImage"
             app:layout_constraintVertical_bias="0.75" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
