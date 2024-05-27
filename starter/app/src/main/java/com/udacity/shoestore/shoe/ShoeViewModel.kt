@@ -10,7 +10,7 @@ class ShoeViewModel: ViewModel() {
     //
     // Constants
     //
-    private val EMPTY_SHOE = Shoe("Name", 35.0, "Company", "", R.drawable.no_shoe_image_available)
+    private val EMPTY_SHOE = Shoe("Name", 35.0.toFloat(), "Company", "", R.drawable.no_shoe_image_available)
     private val IMAGE_RESOURCES = listOf(
         R.drawable.no_shoe_image_available,
         R.drawable.new_balance_550_white,
@@ -77,7 +77,7 @@ class ShoeViewModel: ViewModel() {
         _detailedShoe.value?.description = description
     }
 
-    fun setShoeSize(size: Double) {
+    fun setShoeSize(size: Float) {
         _detailedShoe.value?.size = size
     }
 

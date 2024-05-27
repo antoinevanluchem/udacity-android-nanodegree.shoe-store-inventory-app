@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.android.navigation.ShoeDetailFragment">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.udacity.shoestore.shoe.ShoeViewModel" />
+    </data>
+
     <!--
     Constraintlayout because it is easier to make an intuitive UI with a lot of elements
     -->
@@ -44,6 +50,7 @@
 
         <EditText
             android:id="@+id/editCompanyName"
+            android:text="@{viewModel.detailedShoe.company}"
             android:layout_width="0dp"
             android:layout_height="@dimen/touch_target"
             android:layout_marginStart="8dp"
@@ -59,6 +66,7 @@
 
         <EditText
             android:id="@+id/editName"
+            android:text="@{viewModel.detailedShoe.name}"
             android:layout_width="0dp"
             android:layout_height="@dimen/touch_target"
             android:layout_marginStart="8dp"
@@ -84,6 +92,7 @@
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
             android:valueFrom="35"
             android:valueTo="48"
+            android:value="@{viewModel.detailedShoe.size}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,11 +104,12 @@
             android:layout_height="150dp"
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/no_shoe_image_available"
+            app:imageResource="@{viewModel.detailedShoe.image}"
             android:contentDescription="@string/shoe_image_content_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <EditText
             android:id="@+id/editDescription"

@@ -39,9 +39,11 @@ class ShoeDetailFragment : Fragment() {
         )
         viewModel = ViewModelProvider(requireActivity()).get(ShoeViewModel::class.java)
 
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+
         setUpButtons()
         setUpShoeEdit()
-        setUpObservers()
 
         return binding.root
     }
@@ -73,30 +75,13 @@ class ShoeDetailFragment : Fragment() {
         }
 
         binding.editShoeSize.addOnChangeListener { _, value, _ ->
-            viewModel.setShoeSize(value.toDouble())
+            viewModel.setShoeSize(value)
         }
 
         binding.editCompanyName.addAfterTextChangedListener { viewModel.setCompanyName(it) }
         binding.editName.addAfterTextChangedListener { viewModel.setName(it) }
         binding.editDescription.addAfterTextChangedListener { viewModel.setDescription(it) }
 
-    }
-
-    //
-    // Observe viewModel.detailedShoe
-    //
-    private fun setUpObservers() {
-        viewModel.detailedShoe.observe(viewLifecycleOwner, Observer {
-            displayShoe(it)
-        })
-    }
-
-    private fun displayShoe(shoe: Shoe) {
-        binding.editCompanyName.setText(shoe.company)
-        binding.editName.setText(shoe.name)
-        binding.editDescription.setText(shoe.description)
-        binding.editShoeSize.value = shoe.size.toFloat()
-        binding.shoeImage.setImageResource(shoe.image)
     }
 }
 
