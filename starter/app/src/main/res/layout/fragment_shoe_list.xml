@@ -20,7 +20,7 @@
             android:layout_marginStart="@dimen/wide"
             android:layout_marginTop="@dimen/wide"
             android:text="@string/shoe_list_text"
-            android:textSize="20sp"
+            android:textSize="@dimen/title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

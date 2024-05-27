@@ -84,7 +84,7 @@
             android:layout_marginEnd="@dimen/wide"
             android:text="@string/shoe_store_inventory"
             android:textColor="@android:color/black"
-            android:textSize="34sp"
+            android:textSize="@dimen/large_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoeStoreImage" />

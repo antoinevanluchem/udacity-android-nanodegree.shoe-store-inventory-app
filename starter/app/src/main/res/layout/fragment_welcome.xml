@@ -22,7 +22,7 @@
             android:fontFamily="@font/allan_bold"
             android:text="@string/welcome"
             android:textColor="@android:color/black"
-            android:textSize="60sp" />
+            android:textSize="@dimen/huge_title" />
 
         <TextView
             android:id="@+id/welcomeMessage"
@@ -33,7 +33,7 @@
             android:layout_marginStart="@dimen/wide"
             android:layout_marginEnd="@dimen/wide"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="@dimen/title" />
 
         <Button
             android:id="@+id/button"

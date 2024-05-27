@@ -3,6 +3,11 @@
     <dimen name="touch_target">50dp</dimen>
     <dimen name="narrow">16dp</dimen>
     <dimen name="wide">16dp</dimen>
-    <dimen name="ultra_wide">16dp</dimen>
+    <dimen name="ultra_wide">32dp</dimen>
+    <dimen name="huge_title">60sp</dimen>
+    <dimen name="large_title">34sp</dimen>
+    <dimen name="title">20sp</dimen>
+    <dimen name="text">16sp</dimen>
+
 
 </resources>
