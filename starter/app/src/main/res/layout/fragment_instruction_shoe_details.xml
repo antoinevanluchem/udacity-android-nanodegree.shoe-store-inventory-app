@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:padding="@dimen/padding_wide">
 
-        <Button
+    <Button
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,11 +37,8 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/InstructionTextStyle"
             android:text="Here you can edit your shoe..."
-            android:textColor="#D50000"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"

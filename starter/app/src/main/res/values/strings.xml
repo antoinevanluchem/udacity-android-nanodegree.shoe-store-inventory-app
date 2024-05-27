@@ -11,7 +11,7 @@
     <string name="lets_go">Let\'s go!</string>
     <string name="company_and_name_format">%1$s %2$s</string>
     <string name="shoe_size_format">Size: %1$.1f</string>
-    <string name="shoe_list_text">These are your shoes...</string>
+    <string name="shoe_list_text">These are your shoes…</string>
     <string name="logout">Logout</string>
     <string name="cancel">Cancel</string>
     <string name="dummy_company">Company</string>
@@ -22,6 +22,6 @@
     <string name="save">Save</string>
     <string name="shoe_image_content_description">This is the image of the shoe.</string>
     <string name="shoe_store_image_content_description">An image of a shoe store.</string>
-    <string name="shoe_store_invetory">Shoe Store Invetory</string>
+    <string name="shoe_store_inventory">Shoe Store Inventory</string>
 
 </resources>

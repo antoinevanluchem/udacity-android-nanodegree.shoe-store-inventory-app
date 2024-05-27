@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:padding="@dimen/padding_wide">
 
-        <Button
+    <Button
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,15 +37,12 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/InstructionTextStyle"
             android:text="Press on the shoe image to see the details of the shoe."
-            android:textColor="#D50000"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.751" />
+            app:layout_constraintVertical_bias="0.75" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
