@@ -10,21 +10,27 @@ import com.udacity.shoestore.databinding.ActivityMainBinding
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var appBarConfiguration : AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_main
         )
-        setSupportActionBar(binding.toolbar)
-        NavigationUI.setupActionBarWithNavController(this, findNavController(R.id.myNavHostFragment))
+        val navController = this.findNavController(R.id.myNavHostFragment)
 
-        // I find an action bar ugly and outdated, hence I hide it for most of the app.
+        setSupportActionBar(binding.toolbar)
+        NavigationUI.setupActionBarWithNavController(this, navController)
+        appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
+
+
         supportActionBar?.hide()
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.myNavHostFragment).navigateUp()
+        val navController = this.findNavController(R.id.myNavHostFragment)
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
     }
 }
