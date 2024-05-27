@@ -72,8 +72,8 @@ class LoginFragment : Fragment() {
      * For now, simple email validation
      */
     private fun isEmailValid(): Boolean {
-//        val email = binding.emailEditText.text.toString().trim()
-//        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        val email = binding.emailEditText.text.toString().trim()
+        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
         return true
     }
 
@@ -81,8 +81,8 @@ class LoginFragment : Fragment() {
      * For now, password needs to be not empty
      */
     private fun isPasswordValid(): Boolean {
-//        val text = binding.passwordEditText.text.toString().trim()
-//        return text.isNotEmpty()
+        val text = binding.passwordEditText.text.toString().trim()
+        return text.isNotEmpty()
         return true
     }
 }
