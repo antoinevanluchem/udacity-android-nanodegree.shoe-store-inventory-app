@@ -37,3 +37,41 @@
 > [ConstraintLayout Tutorial for Android: Complex Layouts](https://www.kodeco.com/9475-constraintlayout-tutorial-for-android-complex-layouts)
 >
 > [5 tips to master ConstraintLayout](https://www.youtube.com/watch?v=hqEfshM5Vfw&ab_channel=AndroidDevelopers)
+
+- Apply Databinding in Layouts to show the correct data to users in multiple layouts.
+> All layouts use the <layout> tag..
+>
+> Details fragment layout uses the ShoeViewModel <data> element.
+>
+> Databinding is enabled correctly in app build.gradle file
+>
+> DataBinding used effeciently, it helps binding UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
+>
+> [Advanced Android Data Binding by Jose Alcérreca, Google EN](https://www.youtube.com/watch?v=bhZ3riUdkIA&ab_channel=AndroidMakers)
+
+- Create a multi-screened Android Application using Android widgets.
+
+- List screen uses ScrollView and LinearLayout for showing a list of items and one Floating Action button for going to the detail screen. Creates a layout for the item.
+> Great job using also DataBinding to inflate item view, many students use the common way of infalting and creating a View() manually. good job 👏
+
+- Create a detail screen that shows two columns of labels and edit views to enter in a new item.
+
+- Correctly use the and elements within the layout.
+> two-way databinding implemented very-well, here are a couple of resources besides the [official guides](https://developer.android.com/topic/libraries/data-binding/two-way)
+> 
+> [Android MVVM LiveData Data Binding](https://www.digitalocean.com/community/tutorials/android-mvvm-livedata-data-binding)
+>
+> [Two-way Android Data Binding](https://medium.com/@fabioCollini/android-data-binding-f9f9d3afc761)
+> 
+> [Advanced Data Binding: Binding to LiveData (One- and Two-Way Binding)](https://proandroiddev.com/advanced-data-binding-binding-to-livedata-one-and-two-way-binding-dae1cd68530f)
+
+## Navigation 
+- Use Databinding for click listeners on a navigation screen in an Android app.
+- Create a Logout menu to return to the Login screen.
+> Really good, menu inflation and logic is handled inside the Shoe listing fragment only 👌
+- Create a navigation file that correctly takes a user from one page to the next in an Android app
+> App flow works as expected with nice transition animations upon the screen transitions, also you can utilize shared elements transitions. a couple of resources for transitions and shared element transitions with navigation component :
+>
+> [Custom Transition Animations with Navigation Component | Android Studio Tutorial](https://www.youtube.com/watch?v=lejBUeOSnf8&ab_channel=Stevdza-San)
+>
+> [Transitions in Android Navigation Component](https://medium.com/@sergiobelda/shared-elements-in-android-navigation-architecture-component-bc5e7922ecdf)
