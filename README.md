@@ -1,52 +1,39 @@
-# README Template
+# Review from Reviewer 
 
-Below is a template provided for use when building your README file for students.
+## Reviewer Note 
+> Great work really
+>
+> well-formatted code along with a smoothly working app with so nice UI and transition animations, you did a great job here really. MVVM implemented correctly along with efficiently using data-binding, also navigation works great. This is one of the best projects I've reviewed.
+>
+> I really enjoyed reviewing your project, thank you.
+>
+> Congratulations 🏆
 
-# Project Title
 
-Project description goes here.
+## Code Quality 
+- Correctly use ViewModel and LiveData lifecycle classes in an Android app
+> Well-done implementing activity-scoped shared ViewModel between fragments,these fragments can share a ViewModel using their activity scope to handle this communication,Shoe list fragment updates correctly upon adding new shoe item in details fragment. 👌 further resources:
+> 
+> [Shared ViewModel in Android: Shared between Fragments](https://blog.mindorks.com/shared-viewmodel-in-android-shared-between-fragments/)
+> 
+> [Share data between fragments](https://developer.android.com/topic/libraries/architecture/viewmodel#sharing)
 
-## Getting Started
+- Correctly implement Single Activity architecture
+> Really good, Single-activity multiple fragments approach implemented very well, few resources to discuss this approach vs multiple activities:
+> 
+> [A Single-Activity Android Application. Why not?!](https://medium.com/rosberryapps/a-single-activity-android-application-why-not-fa2a5458a099)
+> 
+> [Reasons to use Android Single-Activity Architecture with Navigation Component(opens in a new tab)](https://oozou.com/blog/reasons-to-use-android-single-activity-architecture-with-navigation-component-36)
+> 
+> [10 best practices for moving to a single activity](https://www.youtube.com/watch?v=9O1D_Ytk0xg&ab_channel=AndroidDevelopers)
 
-Instructions for how to get a copy of the project running on your local machine.
+- Write error-free code
+> app builds and runs without errors, 👏
 
-### Dependencies
-
-```
-Examples here
-```
-
-### Installation
-
-Step by step explanation of how to get a dev environment running.
-
-List out the steps
-
-```
-Give an example here
-```
-
-## Testing
-
-Explain the steps needed to run any automated tests
-
-### Break Down Tests
-
-Explain what each test does and why
-
-```
-Examples here
-```
-## Project Instructions
-
-This section should contain all the student deliverables for this project.
-
-## Built With
-
-* [Item1](www.item1.com) - Description of item
-* [Item2](www.item2.com) - Description of item
-* [Item3](www.item3.com) - Description of item
-
-Include all items used to build project.
-
-## License
+## Layouts 
+- Create layouts using the correct ViewGroups and Views in an Android app.
+> Great,ConstraintLayout allows you to create large and complex layouts with a flat view hierarchy (no nested view groups). It's similar to RelativeLayout in that all views are laid out according to relationships between sibling views and the parent layout, but it's more flexible than RelativeLayout and easier to use with Android Studio's Layout Editor. here are a couple of resources to master ConstrainLayout:
+>
+> [ConstraintLayout Tutorial for Android: Complex Layouts](https://www.kodeco.com/9475-constraintlayout-tutorial-for-android-complex-layouts)
+>
+> [5 tips to master ConstraintLayout](https://www.youtube.com/watch?v=hqEfshM5Vfw&ab_channel=AndroidDevelopers)
